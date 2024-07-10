@@ -1,0 +1,122 @@
+* {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Kode Mono", monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+body:before {
+    content: "";
+    position: fixed;
+    inset: -50px;
+    background:
+        repeating-radial-gradient(#000 0 0.0001%,#cc9e9e 0 0.0002%) 60% 60%/3000px 3000px,
+        repeating-conic-gradient(#000 0 0.0001%,#afa0a0 0 0.0002%) 40% 40%/4000px 3000px;
+    background-blend-mode: difference;
+    filter: blur(2px) contrast(100) brightness(40);
+    mix-blend-mode: lighten;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #121212;
+    margin: 0;
+    min-height: 100vh;
+}
+
+html {
+    background: #fff;
+}
+
+.movieCard {
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(255,255,255,0.18);
+    height: auto;
+    width: 60vh;
+    max-width: 90%;
+    color: #E0E0E0;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: auto;
+}
+
+.searchSection {
+    margin: 30px 0 20px 0;
+}
+
+.searchSection #movieName {
+    background-color: #1E1E1E;
+    color: #E0E0E0;
+    border: 1px solid #555;
+    padding: 12px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 300px;
+}
+
+.searchSection #search {
+    background-color: #1E1E1E;
+    color: #E0E0E0;
+    border: 1px solid #555;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.searchSection #search:hover {
+    background-color: #555;
+}
+
+.searchSection #search:active {
+    transform: scale(0.95);
+}
+
+/* Movie heading Section */
+.movieHeading {
+    font-size: 30px;
+    padding: 0 30px;
+    margin: 0 0 20px 0;
+    color: #F8F0DA;
+}
+
+/* Movie Poster Section */
+#moviePoster {
+    width: auto;
+    height: 250px;
+    background-color: #1E1E1E;
+    color: #E0E0E0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.details {
+    margin: 20px 25px;
+    text-align: justify;
+    color: #F8F0DA;
+}
+
+.details p {
+    margin: 5px 0;
+}
+
+.detailsSpan {
+    color: #ffb6b6;
+}
+
