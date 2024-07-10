@@ -120,3 +120,32 @@ html {
     color: #ffb6b6;
 }
 
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .movieCard {
+        width: 80vh;
+        max-width: 95%;
+    }
+
+    .searchSection #movieName {
+        width: 100%;
+    }
+
+    .searchSection #search {
+        width: 100%;
+        margin: 10px 0 0 0;
+    }
+
+    .movieHeading {
+        font-size: 24px;
+    }
+
+    #moviePoster {
+        height: 40vh;
+        max-width: 100%;
+    }
+
+    .details {
+        margin: 10px 15px;
+    }
+}
