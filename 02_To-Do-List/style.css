@@ -27,11 +27,25 @@ body {
 .cards {
     height: 100%;
     width: 450px;
-    
     background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+
+
+.half-card {
+    height: 48%;
+    width: 450px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.calender {
+    margin-bottom: calc(100% - 94%);
 }
 
 header {
@@ -106,10 +120,11 @@ header h1 {
 }
 
 .task-space .tasks-div .tools {
+    display: flex;
     padding: 25px 10px 0 0;
 }
 
-.task-space .tasks-div .tools a {
+.task-space .tasks-div .tools .tool {
     margin-left: 15px;
 }
 
