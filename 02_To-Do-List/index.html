@@ -6,26 +6,41 @@
     <title>TO-DO App</title>
     <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
 <body>
     <!-- <h1>TO DO LIST</h1> -->
     <div class="container">
+
         <div class="card-1 cards">
-            <header>To Do List</header>
+            <header>
+                <h1>TODO List</h1>
+            </header>
             <div class="task-space">
-                <div class="tasks">
-                    <div class="title"></div>
-                    <div class="detail"></div>
+                <div class="tasks-div">
+                    <div class="tasks">
+                        <div class="title">TODO TITLE</div>
+                        <div class="detail">This is TODO description </div>
+                    </div>
+                    <div class="tools">
+                        <a href="" class="edit-task">E</a>
+                        <a href="" class="delete-task">D</a>
+                        <a href="" class="complete-task">C</a>
+                    </div>
+                </div>  
+            </div>
+            <div class="add-task-plus">
+                <div class="plus">
+                    <h1>+</h1>
                 </div>
             </div>
-            <div class="add-task-plus"></div>
             <footer style="display: none">
                 <a href="">All</a>
                 <a href="">Pending</a>
                 <a href="">Completed</a>
             </footer>
-
         </div>
+
         <div class="card-2 cards">
             <div class="calander"></div>
             <div class="completed-tasks"></div>
