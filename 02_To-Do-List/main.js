@@ -1,18 +1,72 @@
 
+const plus = document.querySelector('.plus');
+const taskSpace = document.querySelector('.task-space');
+const day = document.querySelector(".calendar-dates");
+const currdate = document.querySelector(".calendar-current-date");
+const prenexIcons = document.querySelectorAll(".calendar-navigation span"); 
+
+//Function to create Task div
+function createTaskElement(title, description) {
+    const tasksDiv = document.createElement('div');
+    tasksDiv.className = 'tasks-div'; // Ensure this matches your CSS class
+
+    const taskDiv = document.createElement('div');
+    taskDiv.className = 'tasks'; // Ensure this matches your CSS class
+
+    const titleDiv = document.createElement('div');
+    titleDiv.className = 'title'; // Ensure this matches your CSS class
+    titleDiv.textContent = title;
+    taskDiv.appendChild(titleDiv);
+
+    const detailDiv = document.createElement('div');
+    detailDiv.className = 'detail'; // Ensure this matches your CSS class
+    detailDiv.textContent = description;
+    taskDiv.appendChild(detailDiv);
+
+    tasksDiv.appendChild(taskDiv);
+
+    const toolsDiv = document.createElement('div');
+    toolsDiv.className = 'tools'; // Ensure this matches your CSS class
+
+    // Function to create tool element with icon
+    function createToolElement(iconClass, color) {
+        const toolDiv = document.createElement('div');
+        toolDiv.className = 'tool'; // Ensure this matches your CSS class
+
+        const icon = document.createElement('i');
+        icon.className = 'fa-solid ' + iconClass;
+        icon.style.color = color;
+
+        toolDiv.appendChild(icon);
+        return toolDiv;
+    }
+
+    const editTool = createToolElement('fa-pencil', '#9395d3');
+    toolsDiv.appendChild(editTool);
+
+    const deleteTool = createToolElement('fa-trash', '#9395d3');
+    toolsDiv.appendChild(deleteTool);
+
+    const completeTool = createToolElement('fa-circle-check', '#9395d3');
+    toolsDiv.appendChild(completeTool);
+
+    tasksDiv.appendChild(toolsDiv);
+
+    return tasksDiv;
+}
+
+const task1 = createTaskElement('Task1','Task Descripttion');
+const task2 = createTaskElement('Task1','Task Descripttion');
+
+plus.addEventListener('click', () => {
+    taskSpace.appendChild(task1);
+    taskSpace.appendChild(task2);
+});
 
 //Calendar
 let date = new Date();
 let month = date.getMonth();
 let year = date.getFullYear();
-
-const day = document
-    .querySelector(".calendar-dates");
-
-const currdate = document
-    .querySelector(".calendar-current-date");
-
-const prenexIcons = document
-    .querySelectorAll(".calendar-navigation span"); 
 
 const months = [
     "January",

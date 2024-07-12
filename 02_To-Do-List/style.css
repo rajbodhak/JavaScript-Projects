@@ -129,6 +129,8 @@ header h1 {
     margin-left: 15px;
 }
 
+/* styling Plus */
+
 .add-task-plus {
     height: 90px;
     display: flex;
@@ -146,12 +148,23 @@ header h1 {
     align-items: center;
     box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.5);
     cursor: pointer;
+    color: #f1f1f1;
+    transition: trasform 0.2s;
+    user-select: none;
+}
+
+.plus:hover {
+    color: #9395d3;
+    background-color: #f1f1f1;
+}
+
+.plus:active {
+    transform: scale(0.9);
 }
 
 .plus h1 {
     font-weight: 100;
-    font-size: 50px;
-    color: #ffffff;
+    font-size: 50px; 
 }
 
 .card-1 {
