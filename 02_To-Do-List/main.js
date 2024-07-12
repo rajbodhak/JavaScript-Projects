@@ -1,9 +1,9 @@
-'use strict';
+
 
 //Calendar
-const date = new Date();
-const month = date.getMonth();
-const year = date.getFullYear();
+let date = new Date();
+let month = date.getMonth();
+let year = date.getFullYear();
 
 const day = document
     .querySelector(".calendar-dates");
@@ -27,4 +27,74 @@ const months = [
     "October",
     "November",
     "December"
-];    
+];
+
+const manipulate  = () => {
+
+    //First day of month
+    let dayOne = new Date(year, month, 1).getDay();
+
+    //Last Date of month
+    let lastDate = new Date(year, month + 1, 0).getDate();
+
+    //Last Day of the month
+    let dayLast = new Date(year, month, lastDate).getDay();
+
+    //Last Date of Previous month
+    let lastMonthLastDate = new Date(year, month, 0).getDate();
+
+    let lit = "";
+
+    //loop to add last dates of the previous months 
+    for(let i = dayOne; i > 0; i--) {
+        lit += `<li class = "inactive">${lastMonthLastDate - i + 1}</li>`;
+    }
+
+    //loop to add the current month dates
+    for(i = 1; i<=lastDate; i++) {
+        let isToday = i === date.getDate() 
+            && month === new Date().getMonth() 
+            && year === new Date().getFullYear() 
+            ? "active" 
+            : "";
+        lit += `<li class = ${isToday}>${i}</li>`;
+    }
+
+    // Calculate the total number of days displayed
+    const totalDisplayedDays = dayOne + lastDate + (6 - dayLast);
+
+    // Calculate the number of days to add from the next month
+    const remainingDays = 42 - totalDisplayedDays;
+
+    //loop to add first dates of the next months
+    for(let i = dayLast; i < 6 + remainingDays; i++) {
+        lit += `<li class = "inactive">${i - dayLast + 1}</li>`;
+    }
+
+    currdate.innerText = `${months[month]} ${year}`;
+
+    day.innerHTML = lit;
+}
+
+manipulate();
+
+prenexIcons.forEach(icon => {
+    
+    icon.addEventListener('click', () => {
+        month = icon.id === "calendar-prev" ? month - 1 : month + 1;
+
+        if(month < 0 || month > 11) {
+
+            date = new Date(year, month, new Date().getDate());
+            year = date.getFullYear();
+            month = date.getMonth();
+
+        }
+
+        else {
+            date = new Date();
+        }
+
+    manipulate();    
+    });
+});
