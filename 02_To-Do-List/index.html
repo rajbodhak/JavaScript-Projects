@@ -16,25 +16,7 @@
             <header>
                 <h1>TODO List</h1>
             </header>
-            <div class="task-space">
-                <!-- <div class="tasks-div">
-                    <div class="tasks">
-                        <div class="title">TODO TITLE</div>
-                        <div class="detail">This is TODO description </div>
-                    </div>
-                    <div class="tools">
-                        <div class="edit-task tool">
-                            <i class="fa-solid fa-pencil" style="color: #9395d3"></i>
-                        </div>
-                        <div class="delete-task tool">
-                            <i class="fa-solid fa-trash" style="color: #9395d3"></i>
-                        </div>
-                        <div class="complete-task tool">
-                            <i class="fa-solid fa-circle-check" style="color: #9395d3"></i>
-                        </div>
-                    </div>
-                </div>   -->
-            </div>
+            <div class="task-space"></div>
             <div class="add-task-plus">
                 <div class="plus">
                     <h1>+</h1>
@@ -48,7 +30,7 @@
         </div>
 
         <div class="card-2">
-            <div class="calendar half-card">
+            <div id="calendar-section" class="calendar half-card">
                 <div class="calendar-container">
                     <header class="calendar-header">
                         <p class="calendar-current-date"></p>
@@ -76,6 +58,33 @@
                         </ul>
                         <ul class="calendar-dates"></ul>
                     </div>
+                </div>
+                <div class="add-task-section" style="display: none">
+                    <header>
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <h1>Add Task</h1>
+                    </header>
+                    <div class="task-input-section">
+                        <input type="text" placeholder="Title">
+                        <input type="text" placeholder="Detail">
+                    </div>
+                    <button>ADD</button>
+                </div>
+
+                <div class="edit-task-section" style="display: none">
+                    <header>
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <h1>Edit Task</h1>
+                    </header>
+                    <div class="edit-input-section">
+                        <input type="text" placeholder="Title">
+                        <input type="text" placeholder="Detail">
+                    </div>
+                    <div class="edit-task-btn">
+                        <button>Update</button>
+                        <button>Cancel</button>
+                    </div>
+                    
                 </div>
             </div>
             <div class="completed-tasks half-card"></div>
