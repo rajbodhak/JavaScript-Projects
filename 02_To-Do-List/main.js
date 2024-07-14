@@ -3,35 +3,39 @@ const plus = document.querySelector('.plus');
 const taskSpace = document.querySelector('.task-space');
 const day = document.querySelector(".calendar-dates");
 const currdate = document.querySelector(".calendar-current-date");
-const prenexIcons = document.querySelectorAll(".calendar-navigation span"); 
+const prenexIcons = document.querySelectorAll(".calendar-navigation span");
+const calendarContainer = document.querySelector('.calendar-container');
+const addTaskSection = document.querySelector('.add-task-section'); 
 
 //Function to create Task div
 function createTaskElement(title, description) {
     const tasksDiv = document.createElement('div');
-    tasksDiv.className = 'tasks-div'; // Ensure this matches your CSS class
+    tasksDiv.className = 'tasks-div';
 
     const taskDiv = document.createElement('div');
-    taskDiv.className = 'tasks'; // Ensure this matches your CSS class
+    taskDiv.className = 'tasks'; 
 
     const titleDiv = document.createElement('div');
-    titleDiv.className = 'title'; // Ensure this matches your CSS class
+    titleDiv.className = 'title'; 
+
     titleDiv.textContent = title;
     taskDiv.appendChild(titleDiv);
 
     const detailDiv = document.createElement('div');
-    detailDiv.className = 'detail'; // Ensure this matches your CSS class
+    detailDiv.className = 'detail'; 
+    
     detailDiv.textContent = description;
     taskDiv.appendChild(detailDiv);
 
     tasksDiv.appendChild(taskDiv);
 
     const toolsDiv = document.createElement('div');
-    toolsDiv.className = 'tools'; // Ensure this matches your CSS class
+    toolsDiv.className = 'tools'; 
 
     // Function to create tool element with icon
     function createToolElement(iconClass, color) {
         const toolDiv = document.createElement('div');
-        toolDiv.className = 'tool'; // Ensure this matches your CSS class
+        toolDiv.className = 'tool'; 
 
         const icon = document.createElement('i');
         icon.className = 'fa-solid ' + iconClass;
@@ -55,13 +59,7 @@ function createTaskElement(title, description) {
     return tasksDiv;
 }
 
-const task1 = createTaskElement('Task1','Task Descripttion');
-const task2 = createTaskElement('Task1','Task Descripttion');
 
-plus.addEventListener('click', () => {
-    taskSpace.appendChild(task1);
-    taskSpace.appendChild(task2);
-});
 
 //Calendar
 let date = new Date();
@@ -152,3 +150,13 @@ prenexIcons.forEach(icon => {
     manipulate();    
     });
 });
+
+
+//Plus button manipulation
+
+
+plus.addEventListener('click', () => {
+    calendarContainer.style.display = 'none';
+    addTaskSection.style.display = 'block';
+});
+
