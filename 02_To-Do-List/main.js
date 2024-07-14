@@ -11,6 +11,10 @@ const addBtn = document.querySelector('#add-btn');
 const titleInput = document.querySelector('#title-input');
 const detailInput = document.querySelector('#detail-input');
 
+const ediIcon = document.querySelector('.fa-pencil');
+const deleteIcons = document.querySelector('.fa-trash');
+const completeIcon = document.querySelector('.fa-circle-check');
+
 //Calendar
 let date = new Date();
 let month = date.getMonth();
@@ -127,25 +131,24 @@ function createTaskElement(title, description) {
     toolsDiv.className = 'tools'; 
 
     // Function to create tool element with icon
-    function createToolElement(iconClass, color) {
+    function createToolElement(iconClass) {
         const toolDiv = document.createElement('div');
         toolDiv.className = 'tool'; 
 
         const icon = document.createElement('i');
         icon.className = 'fa-solid ' + iconClass;
-        icon.style.color = color;
 
         toolDiv.appendChild(icon);
         return toolDiv;
     }
 
-    const editTool = createToolElement('fa-pencil', '#9395d3');
+    const editTool = createToolElement('fa-pencil');
     toolsDiv.appendChild(editTool);
 
-    const deleteTool = createToolElement('fa-trash', '#9395d3');
+    const deleteTool = createToolElement('fa-trash');
     toolsDiv.appendChild(deleteTool);
 
-    const completeTool = createToolElement('fa-circle-check', '#9395d3');
+    const completeTool = createToolElement('fa-circle-check');
     toolsDiv.appendChild(completeTool);
 
     tasksDiv.appendChild(toolsDiv);
@@ -169,9 +172,16 @@ addBtn.addEventListener('click', () =>{
     const title = titleInput.value;
     const detail = detailInput.value;
 
-    const taskElement = createTaskElement(title,detail);
-    taskSpace.appendChild(taskElement);
+    if(title != '' && detail != '') {
+        const taskElement = createTaskElement(title,detail);
+        taskSpace.appendChild(taskElement);
 
-    titleInput.value = '';
-    detailInput.value = '';
+        titleInput.value = '';
+        detailInput.value = '';
+    }
+
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // logic
 });

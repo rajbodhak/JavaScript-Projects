@@ -129,6 +129,14 @@ body {
     margin-left: 15px;
 }
 
+.task-space .tasks-div .tools .tool i {
+    color: #9395d3;
+}
+.task-space .tasks-div .tools .tool i:hover {
+    font-size: 1.2rem;
+    color: #686dcc;
+}
+
 /* styling Plus */
 
 .add-task-plus {
