@@ -5,61 +5,11 @@ const day = document.querySelector(".calendar-dates");
 const currdate = document.querySelector(".calendar-current-date");
 const prenexIcons = document.querySelectorAll(".calendar-navigation span");
 const calendarContainer = document.querySelector('.calendar-container');
-const addTaskSection = document.querySelector('.add-task-section'); 
-
-//Function to create Task div
-function createTaskElement(title, description) {
-    const tasksDiv = document.createElement('div');
-    tasksDiv.className = 'tasks-div';
-
-    const taskDiv = document.createElement('div');
-    taskDiv.className = 'tasks'; 
-
-    const titleDiv = document.createElement('div');
-    titleDiv.className = 'title'; 
-
-    titleDiv.textContent = title;
-    taskDiv.appendChild(titleDiv);
-
-    const detailDiv = document.createElement('div');
-    detailDiv.className = 'detail'; 
-    
-    detailDiv.textContent = description;
-    taskDiv.appendChild(detailDiv);
-
-    tasksDiv.appendChild(taskDiv);
-
-    const toolsDiv = document.createElement('div');
-    toolsDiv.className = 'tools'; 
-
-    // Function to create tool element with icon
-    function createToolElement(iconClass, color) {
-        const toolDiv = document.createElement('div');
-        toolDiv.className = 'tool'; 
-
-        const icon = document.createElement('i');
-        icon.className = 'fa-solid ' + iconClass;
-        icon.style.color = color;
-
-        toolDiv.appendChild(icon);
-        return toolDiv;
-    }
-
-    const editTool = createToolElement('fa-pencil', '#9395d3');
-    toolsDiv.appendChild(editTool);
-
-    const deleteTool = createToolElement('fa-trash', '#9395d3');
-    toolsDiv.appendChild(deleteTool);
-
-    const completeTool = createToolElement('fa-circle-check', '#9395d3');
-    toolsDiv.appendChild(completeTool);
-
-    tasksDiv.appendChild(toolsDiv);
-
-    return tasksDiv;
-}
-
-
+const addTaskSection = document.querySelector('.add-task-section');
+const backIcon = document.querySelector('#back-icon');
+const addBtn = document.querySelector('#add-btn');
+const titleInput = document.querySelector('#title-input');
+const detailInput = document.querySelector('#detail-input');
 
 //Calendar
 let date = new Date();
@@ -151,12 +101,77 @@ prenexIcons.forEach(icon => {
     });
 });
 
+//Function to create Task div
+function createTaskElement(title, description) {
+    const tasksDiv = document.createElement('div');
+    tasksDiv.className = 'tasks-div';
+
+    const taskDiv = document.createElement('div');
+    taskDiv.className = 'tasks'; 
+
+    const titleDiv = document.createElement('div');
+    titleDiv.className = 'title'; 
+
+    titleDiv.textContent = title;
+    taskDiv.appendChild(titleDiv);
+
+    const detailDiv = document.createElement('div');
+    detailDiv.className = 'detail'; 
+    
+    detailDiv.textContent = description;
+    taskDiv.appendChild(detailDiv);
+
+    tasksDiv.appendChild(taskDiv);
+
+    const toolsDiv = document.createElement('div');
+    toolsDiv.className = 'tools'; 
+
+    // Function to create tool element with icon
+    function createToolElement(iconClass, color) {
+        const toolDiv = document.createElement('div');
+        toolDiv.className = 'tool'; 
+
+        const icon = document.createElement('i');
+        icon.className = 'fa-solid ' + iconClass;
+        icon.style.color = color;
+
+        toolDiv.appendChild(icon);
+        return toolDiv;
+    }
+
+    const editTool = createToolElement('fa-pencil', '#9395d3');
+    toolsDiv.appendChild(editTool);
+
+    const deleteTool = createToolElement('fa-trash', '#9395d3');
+    toolsDiv.appendChild(deleteTool);
+
+    const completeTool = createToolElement('fa-circle-check', '#9395d3');
+    toolsDiv.appendChild(completeTool);
+
+    tasksDiv.appendChild(toolsDiv);
+
+    return tasksDiv;
+}
 
 //Plus button manipulation
-
 
 plus.addEventListener('click', () => {
     calendarContainer.style.display = 'none';
     addTaskSection.style.display = 'block';
 });
 
+backIcon.addEventListener('click', () => {
+    calendarContainer.style.display = 'block';
+    addTaskSection.style.display = 'none';
+});
+
+addBtn.addEventListener('click', () =>{
+    const title = titleInput.value;
+    const detail = detailInput.value;
+
+    const taskElement = createTaskElement(title,detail);
+    taskSpace.appendChild(taskElement);
+
+    titleInput.value = '';
+    detailInput.value = '';
+});
