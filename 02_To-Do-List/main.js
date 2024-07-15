@@ -5,10 +5,16 @@ const currdate = document.querySelector(".calendar-current-date");
 const prenexIcons = document.querySelectorAll(".calendar-navigation span");
 const calendarContainer = document.querySelector('.calendar-container');
 const addTaskSection = document.querySelector('.add-task-section');
-const backIcon = document.querySelector('#back-icon');
+const editTaskSection = document.querySelector('.edit-task-section');
+const backIconTask = document.querySelector('#back-icon-task');
+const backIconEdit = document.querySelector('#back-icon-edit');
 const addBtn = document.querySelector('#add-btn');
+const editIcon = document.querySelector('.fa-pencil');
 const titleInput = document.querySelector('#title-input');
 const detailInput = document.querySelector('#detail-input');
+const updateBtn = document.getElementById('update');
+const calcelBtn = document.getElementById('cancel');
+const taskDiv = document.querySelector('.tasks-div');
 
 // Calendar setup
 let date = new Date();
@@ -91,6 +97,7 @@ function createTaskElement(title, description) {
     toolsDiv.className = 'tools';
 
     const editTool = createToolElement('fa-pencil');
+    editTool.querySelector('i').addEventListener('click', editTask)
     toolsDiv.appendChild(editTool);
 
     const deleteTool = createToolElement('fa-trash');
@@ -129,10 +136,15 @@ plus.addEventListener('click', () => {
     addTaskSection.style.display = 'block';
 });
 
-backIcon.addEventListener('click', () => {
+backIconTask.addEventListener('click', () => {
     calendarContainer.style.display = 'block';
     addTaskSection.style.display = 'none';
 });
+
+backIconEdit.addEventListener('click', () => {
+    calendarContainer.style.display = 'block';
+    editTaskSection.style.display = 'none';
+})
 
 addBtn.addEventListener('click', () => {
     const title = titleInput.value;
@@ -145,4 +157,19 @@ addBtn.addEventListener('click', () => {
         titleInput.value = '';
         detailInput.value = '';
     }
+});
+
+
+//Edit Button Manipulation
+
+function editTask(event) {
+    calendarContainer.style.display = 'none';
+    addTaskSection.style.display = 'none';
+    editTaskSection.style.display = 'block';
+
+    taskDiv.style.display = 'none';
+}
+
+updateBtn.addEventListener('click', () => {
+    
 });
