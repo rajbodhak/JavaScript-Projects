@@ -13,7 +13,7 @@ const editIcon = document.querySelector('.fa-pencil');
 const titleInput = document.querySelector('#title-input');
 const detailInput = document.querySelector('#detail-input');
 const updateBtn = document.querySelector('#update');
-const calcelBtn = document.querySelector('#cancel');
+const cancelBtn = document.querySelector('#cancel');
 const taskDiv = document.querySelector('.tasks-div');
 const editTitle = document.querySelector('#edit-input');
 const editDetail = document.querySelector('#edit-detail');
@@ -187,5 +187,21 @@ function editTask(taskId) {
 }
 
 updateBtn.addEventListener('click', () => {
+    const taskId = editTaskSection.getAttribute('data-current-task-id');
+    const taskElement = document.querySelector(`.tasks-div[data-task-id = '${taskId}']`);
+    console.log(taskElement);
 
+    const newTitle = editTitle.value;
+    const newDetail = editDetail.value;
+
+    taskElement.querySelector('.title').textContent = newTitle;
+    taskElement.querySelector('.detail').textContent = newDetail;
+
+    editTaskSection.style.display = 'none';
+    calendarContainer.style.display = 'block';
+});
+
+cancelBtn.addEventListener('click', () => {
+    editTaskSection.style.display = 'none';
+    calendarContainer.style.display = 'block';
 });
