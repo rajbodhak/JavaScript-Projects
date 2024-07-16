@@ -12,9 +12,11 @@ const addBtn = document.querySelector('#add-btn');
 const editIcon = document.querySelector('.fa-pencil');
 const titleInput = document.querySelector('#title-input');
 const detailInput = document.querySelector('#detail-input');
-const updateBtn = document.getElementById('update');
-const calcelBtn = document.getElementById('cancel');
+const updateBtn = document.querySelector('#update');
+const calcelBtn = document.querySelector('#cancel');
 const taskDiv = document.querySelector('.tasks-div');
+const editTitle = document.querySelector('#edit-input');
+const editDetail = document.querySelector('#edit-detail');
 
 // Calendar setup
 let date = new Date();
@@ -72,22 +74,23 @@ prenexIcons.forEach(icon => {
 });
 
 // Function to create Task div
-function createTaskElement(title, description) {
+let taskIdCounter = 0; 
+
+function createTaskElement(id, title, description) {
     const tasksDiv = document.createElement('div');
     tasksDiv.className = 'tasks-div';
+    tasksDiv.dataset.taskId = id; // Set a data attribute for the task ID
 
     const taskDiv = document.createElement('div');
     taskDiv.className = 'tasks';
 
     const titleDiv = document.createElement('div');
     titleDiv.className = 'title';
-
     titleDiv.textContent = title;
     taskDiv.appendChild(titleDiv);
 
     const detailDiv = document.createElement('div');
     detailDiv.className = 'detail';
-
     detailDiv.textContent = description;
     taskDiv.appendChild(detailDiv);
 
@@ -97,7 +100,7 @@ function createTaskElement(title, description) {
     toolsDiv.className = 'tools';
 
     const editTool = createToolElement('fa-pencil');
-    editTool.querySelector('i').addEventListener('click', editTask)
+    editTool.querySelector('i').addEventListener('click', () => editTask(id));
     toolsDiv.appendChild(editTool);
 
     const deleteTool = createToolElement('fa-trash');
@@ -111,6 +114,24 @@ function createTaskElement(title, description) {
 
     return tasksDiv;
 }
+
+function addNewTask(title, description) {
+    const taskId = taskIdCounter++;
+    const taskElement = createTaskElement(taskId, title, description);
+    document.querySelector('.task-space').appendChild(taskElement);
+}
+
+addBtn.addEventListener('click', () => {
+    const title = titleInput.value;
+    const detail = detailInput.value;
+
+    if (title.trim() !== '' && detail.trim() !== '') {
+        titleInput.value = '';
+        detailInput.value = '';
+        
+        addNewTask(title, detail);
+    }
+});
 
 function createToolElement(iconClass) {
     const toolDiv = document.createElement('div');
@@ -134,6 +155,7 @@ function deleteTask(event) {
 plus.addEventListener('click', () => {
     calendarContainer.style.display = 'none';
     addTaskSection.style.display = 'block';
+    editTaskSection.style.display = 'none';
 });
 
 backIconTask.addEventListener('click', () => {
@@ -146,30 +168,24 @@ backIconEdit.addEventListener('click', () => {
     editTaskSection.style.display = 'none';
 })
 
-addBtn.addEventListener('click', () => {
-    const title = titleInput.value;
-    const detail = detailInput.value;
-
-    if (title.trim() !== '' && detail.trim() !== '') {
-        const taskElement = createTaskElement(title, detail);
-        taskSpace.appendChild(taskElement);
-
-        titleInput.value = '';
-        detailInput.value = '';
-    }
-});
-
-
 //Edit Button Manipulation
 
-function editTask(event) {
-    calendarContainer.style.display = 'none';
-    addTaskSection.style.display = 'none';
-    editTaskSection.style.display = 'block';
+function editTask(taskId) {
+    // Show the edit task section
+    const taskElement = document.querySelector(`.tasks-div[data-task-id='${taskId}']`);
+    const title = taskElement.querySelector('.title').textContent;
+    const detail = taskElement.querySelector('.detail').textContent;
 
-    
+    editTitle.value = title;
+    editDetail.value = detail;    
+
+    editTaskSection.style.display = 'block';
+    addTaskSection.style.display = 'none';
+    calendarContainer.style.display = 'none';
+
+    editTaskSection.setAttribute('data-current-task-id', taskId);
 }
 
 updateBtn.addEventListener('click', () => {
-    
+
 });

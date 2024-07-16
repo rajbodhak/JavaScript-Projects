@@ -4,17 +4,14 @@
     margin: 0;
     box-sizing: border-box;
     font-family: "Kode Mono", monospace;
-    font-optical-sizing: auto;
-    font-style: normal;
 }
 
 body {
     height: 100vh;
-    background-color: #414141;
+    background-color: #d6d7ef;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #d6d7ef;
 }
 
 .container {
@@ -22,122 +19,88 @@ body {
     width: 1000px;
     display: flex;
     justify-content: center;
-    
 }
 
-.cards {
+.cards, .half-card {
     height: 100%;
     width: 450px;
     background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     border-radius: 10px;
 }
-
-
 
 .half-card {
     height: 48%;
-    width: 450px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    border-radius: 10px;
 }
 
-
-.card-1 header {
-    border-radius: 10px 10px 0 0;
+.card-1 header, .add-task-section header, .edit-task-section header, .completed-header {
     height: 90px;
     background-color: #9395d3;
     font-weight: 900;
     font-size: 15px;
-}
-
-.card-1 header h1 {
-    padding: 30px 0 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     color: #fff;
+    border-radius: 10px 10px 0 0;
 }
 
-.task-space {
+.card-1 header h1, .add-task-section header h1, .edit-task-section header h1 {
+    padding-left: 20px;
+}
+
+.task-space, .complete-container {
     height: calc(100% - 180px);
     overflow-y: auto;
     padding: 10px;
 }
 
-
-/* Scrollbar Style Start*/
-.task-space::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
-}
-
-.task-space::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-
-.task-space::-webkit-scrollbar-thumb {
-    background: #9899b9;
-    border-radius: 10px;
-}
-
-.task-space::-webkit-scrollbar-thumb:hover {
-    background: #9395d3;
-}
-/* Scrollbar Style End*/
-
-
-.task-space .tasks-div {
+.task-space .tasks-div, .complete-container .tasks-div {
     margin: 10px 0;
     min-height: 70px;
-    height: auto;
-    width: 100%;
-    border-radius: 5px;
-    background-color: #ffffff;
+    background-color: #fff;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: space-between;
+    border-radius: 5px;
 }
 
-.task-space .tasks-div .tasks {
+.task-space .tasks-div .tasks, .complete-container .tasks-div .tasks {
     padding: 5px 10px;
     width: calc(100% - 25%);
-    /* background-color: antiquewhite; */
 }
 
-.task-space .tasks-div .tasks .title {
+.title {
     font-weight: 600;
-     color: #9395d3; /* #7277ff */
+    color: #9395d3;
 }
 
-.task-space .tasks-div .tasks .detail {
+.detail {
     font-size: small;
     font-weight: 600;
     color: #575656;
     text-align: justify;
 }
 
-.task-space .tasks-div .tools {
+.tools {
     display: flex;
     padding: 25px 10px 0 0;
 }
 
-.task-space .tasks-div .tools .tool {
+.tool {
     margin-left: 15px;
 }
 
-.task-space .tasks-div .tools .tool i {
+.tool i {
     color: #9395d3;
+    transition: transform 0.2s;
 }
-.task-space .tasks-div .tools .tool i:hover {
+
+.tool i:hover {
     font-size: 1.2rem;
     color: #686dcc;
 }
-
-/* styling Plus */
 
 .add-task-plus {
     height: 90px;
@@ -172,7 +135,7 @@ body {
 
 .plus h1 {
     font-weight: 100;
-    font-size: 50px; 
+    font-size: 50px;
 }
 
 .card-1 {
@@ -183,33 +146,30 @@ body {
     margin-left: 25px;
 }
 
-/* Styling Calender */
 .calendar {
     margin-bottom: calc(100% - 94%);
     display: flex;
     justify-content: center;
     align-items: center;
-    /* padding: 10px; */
-    
 }
 
 .calendar-container {
     width: 420px;
     border-radius: 10px;
 }
- 
+
 .calendar-container header {
     display: flex;
     align-items: center;
     padding: 5px 25px 5px;
     justify-content: space-between;
 }
- 
-header .calendar-navigation {
+
+.calendar-navigation {
     display: flex;
 }
- 
-header .calendar-navigation span {
+
+.calendar-navigation span {
     height: 38px;
     width: 38px;
     margin: 0 1px;
@@ -221,60 +181,59 @@ header .calendar-navigation span {
     color: #aeabab;
     font-size: 1.9rem;
 }
- 
+
 .calendar-navigation span:last-child {
     margin-right: -10px;
 }
- 
-header .calendar-navigation span:hover {
+
+.calendar-navigation span:hover {
     background: #f2f2f2;
 }
- 
-header .calendar-current-date {
+
+.calendar-current-date {
     font-weight: 600;
     font-size: 1.5rem;
     color: #9395d3;
 }
- 
+
 .calendar-body {
     padding: 10px 20px;
 }
- 
+
 .calendar-body ul {
     list-style: none;
-    flex-wrap: wrap;
     display: flex;
+    flex-wrap: wrap;
     text-align: center;
 }
- 
- 
+
 .calendar-body li {
     width: calc(100% / 7);
-    font-size: 1 rem;
+    font-size: 1rem;
     color: #414141;
 }
- 
-.calendar-body .calendar-weekdays li {
+
+.calendar-weekdays li {
     cursor: default;
     font-weight: 500;
 }
- 
-.calendar-body .calendar-dates li {
+
+.calendar-dates li {
     font-size: 0.90rem;
     margin-top: 20px;
     position: relative;
     cursor: pointer;
     color: #3f2452;
 }
- 
+
 .calendar-dates li.inactive {
     color: #817e7e;
 }
- 
+
 .calendar-dates li.active {
     color: #fff;
 }
- 
+
 .calendar-dates li::before {
     position: absolute;
     content: "";
@@ -286,74 +245,31 @@ header .calendar-current-date {
     border-radius: 50%;
     transform: translate(-50%, -50%);
 }
- 
+
 .calendar-dates li.active::before {
     background: #9395d3;
 }
- 
+
 .calendar-dates li:not(.active):hover::before {
     background: #f2f2f2;
 }
 
-
-/* ADD Task Section */
-
-.add-task-section {
+.add-task-section, .edit-task-section {
     width: 100%;
     height: 100%;
 }
 
-.add-task-section header {
-    border-radius: 10px 10px 0 0;
-    height: 90px;
-    background-color: #9395d3;
-    font-weight: 900;
-    font-size: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.add-task-section header h1 {
-    padding: 10px 150px 0 0;
-    color: #fff;
-}
-
-.add-task-section header i {
-    font-size: 1.70rem;
-    padding-left: 20px;
-    color: #f1f1f1;
-    transition: transform 0.2s;
-}
-
-.add-task-section header i:hover {
-    color: #bebebe;
-}
-
-.add-task-section header i:active {
-    transform: scale(0.9);
-}
-
-.task-input-section {
+.task-input-section, .edit-input-section {
     display: flex;
     flex-direction: column;
     padding: 50px 20px 10px;
     overflow-y: auto;
 }
 
-.task-input-section input {
-    margin-bottom: 30px;
-    padding-bottom: 5px;
-    background-color: transparent;
-    height: auto;
-    outline: none;
-    border-bottom: 1px solid #7a7a7a;
-}
-
-.add-task-section button {
+.add-task-section button, .edit-task-section button {
     padding: 12px 0;
     border-radius: 10px;
-    margin: 0 40px ;
+    margin: 0 40px;
     width: calc(100% - 80px);
     font-size: 1.1rem;
     font-weight: 700;
@@ -364,96 +280,47 @@ header .calendar-current-date {
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
-.add-task-section button:hover {
+.add-task-section button:hover, .edit-task-section button:hover {
     background-color: #aaace9;
-    color: #fff;
 }
 
-.add-task-section button:active {
+.add-task-section button:active, .edit-task-section button:active {
     transform: scale(0.9);
 }
 
-/* Edit task Section  */
-.edit-task-section {
-    width: 100%;
-    height: 100%;
-}
-
-.edit-task-section header {
-    border-radius: 10px 10px 0 0;
-    height: 90px;
-    background-color: #9395d3;
-    font-weight: 900;
-    font-size: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.edit-task-section header h1 {
-    padding: 10px 150px 0 0;
-    color: #fff;
-}
-
-.edit-task-section header i {
-    font-size: 1.70rem;
+.add-task-section header i, .edit-task-section header i {
+    font-size: 1.7rem;
     padding-left: 20px;
     color: #f1f1f1;
-    transition: transform 0.2s;
 }
 
-.edit-task-section header i:hover {
+.add-task-section header h1, .edit-task-section header h1 {
+    padding-right: 150px;
+}
+
+.add-task-section header i:hover, .edit-task-section header i:hover {
     color: #bebebe;
 }
 
-.edit-task-section header i:active {
+.add-task-section header i:active, .edit-task-section header i:active {
     transform: scale(0.9);
 }
 
-.edit-input-section {
-    display: flex;
-    flex-direction: column;
-    padding: 50px 20px 10px;
-    overflow-y: auto;
-}
-
-.edit-input-section input {
+.task-input-section input, .edit-input-section input {
     margin-bottom: 30px;
     padding-bottom: 5px;
     background-color: transparent;
-    height: auto;
     outline: none;
     border-bottom: 1px solid #7a7a7a;
 }
 
-.edit-task-section .edit-task-btn {
+.edit-task-btn {
     display: flex;
 }
 
 .edit-task-section button {
-    padding: 12px 0;
-    border-radius: 10px;
-    margin: 0 40px ;
     width: calc((100% - 80px) / 2);
-    font-size: 1.1rem;
-    font-weight: 700;
-    background-color: #9395d3;
-    color: #fff;
-    letter-spacing: 1.5px;
-    transition: transform 0.2s;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
 }
-
-.edit-task-section button:hover {
-    background-color: #aaace9;
-    color: #fff;
-}
-
-.edit-task-section button:active {
-    transform: scale(0.9);
-}
-
-/* Completed Task section */
 
 .completed-header {
     height: 20%;
@@ -467,27 +334,21 @@ header .calendar-current-date {
     color: #f1f1f1;
 }
 
-.complete-container {
-    padding: 10px;
-    overflow-y: auto;
-}
-
-/* Scrollbar Style Start*/
-.complete-container::-webkit-scrollbar {
+/* Scrollbar Style */
+.task-space::-webkit-scrollbar, .complete-container::-webkit-scrollbar {
     width: 12px;
-    height: 12px;
 }
 
-.complete-container::-webkit-scrollbar-track {
+.task-space::-webkit-scrollbar-track, .complete-container::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 10px;
 }
 
-.complete-container::-webkit-scrollbar-thumb {
+.task-space::-webkit-scrollbar-thumb, .complete-container::-webkit-scrollbar-thumb {
     background: #9899b9;
     border-radius: 10px;
 }
 
-.complete-container::-webkit-scrollbar-thumb:hover {
+.task-space::-webkit-scrollbar-thumb:hover, .complete-container::-webkit-scrollbar-thumb:hover {
     background: #9395d3;
 }
