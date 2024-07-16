@@ -150,7 +150,7 @@ addBtn.addEventListener('click', () => {
     const title = titleInput.value;
     const detail = detailInput.value;
 
-    if (title !== '' && detail !== '') {
+    if (title.trim() !== '' && detail.trim() !== '') {
         const taskElement = createTaskElement(title, detail);
         taskSpace.appendChild(taskElement);
 
@@ -167,7 +167,7 @@ function editTask(event) {
     addTaskSection.style.display = 'none';
     editTaskSection.style.display = 'block';
 
-    taskDiv.style.display = 'none';
+    
 }
 
 updateBtn.addEventListener('click', () => {
