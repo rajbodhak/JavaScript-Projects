@@ -17,6 +17,7 @@ const cancelBtn = document.querySelector('#cancel');
 const taskDiv = document.querySelector('.tasks-div');
 const editTitle = document.querySelector('#edit-input');
 const editDetail = document.querySelector('#edit-detail');
+const completeTaskspace = document.querySelector('.complete-container');
 
 // Calendar setup
 let date = new Date();
@@ -108,6 +109,7 @@ function createTaskElement(id, title, description) {
     toolsDiv.appendChild(deleteTool);
 
     const completeTool = createToolElement('fa-circle-check');
+    completeTool.querySelector('i').addEventListener('click', () => addCompleteTask(id));
     toolsDiv.appendChild(completeTool);
 
     tasksDiv.appendChild(toolsDiv);
@@ -205,3 +207,12 @@ cancelBtn.addEventListener('click', () => {
     editTaskSection.style.display = 'none';
     calendarContainer.style.display = 'block';
 });
+
+//Completed Task Section
+
+function addCompleteTask(taskId) {
+    const taskElement = document.querySelector(`.tasks-div[data-task-id = '${taskId}']`);
+    if(taskElement) {
+        completeTaskspace.appendChild(taskElement);
+    } 
+};

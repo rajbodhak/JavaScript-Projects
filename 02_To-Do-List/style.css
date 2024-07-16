@@ -34,7 +34,7 @@ body {
     height: 48%;
 }
 
-.card-1 header, .add-task-section header, .edit-task-section header, .completed-header {
+.card-1 header, .add-task-section header, .edit-task-section header {
     height: 90px;
     background-color: #9395d3;
     font-weight: 900;
@@ -50,7 +50,7 @@ body {
     padding-left: 20px;
 }
 
-.task-space, .complete-container {
+.task-space {
     height: calc(100% - 180px);
     overflow-y: auto;
     padding: 10px;
@@ -322,6 +322,7 @@ body {
     width: calc((100% - 80px) / 2);
 }
 
+/* Completed Task Section */
 .completed-header {
     height: 20%;
     background-color: #9395d3;
@@ -332,6 +333,12 @@ body {
     font-size: 1.5rem;
     font-weight: 800;
     color: #f1f1f1;
+}
+
+.complete-container {
+    height: calc(100% - 20%);
+    padding: 10px;
+    overflow-y: auto;
 }
 
 /* Scrollbar Style */
